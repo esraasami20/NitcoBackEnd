@@ -27,6 +27,13 @@ namespace NitcoBackEnd.Services
             return accountsChart;
         }
 
+        //get data by name 
+        public List<AccountsChart> GetAccountsBySearchName(string name)
+        {
+            return _db.AccountsCharts.Where(a => a.IsActive == true &&( a.NameAr.Contains(name) || a.NameEn.Contains(name) || a.Number.Contains(name))).ToList();
+        }
+        
+
         //edit account
         public bool EditAccountData(Guid id,AccountsChart accounts)
         {

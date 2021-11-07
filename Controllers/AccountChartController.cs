@@ -53,7 +53,30 @@ namespace NitcoBackEnd.Controllers
             }
 
         }
-    
+
+        [HttpGet("search")]
+        public ActionResult Search([FromQuery] string name)
+        {         
+
+            var result = _accountChartService.GetAccountsBySearchName(name);
+            return Ok(result);
+        }
+
+        //[HttpGet("search-EN")]
+        //public ActionResult SearchEnglisg([FromQuery] string name)
+        //{
+
+        //    var result = _accountChartService.GetAccountsBySearchNameEn(name);
+        //    return Ok(result);
+        //}
+        //[HttpGet("search-num")]
+        //public ActionResult SearchNumber([FromQuery] string name)
+        //{
+
+        //    var result = _accountChartService.GetAccountsBySearchNumber(name);
+        //    return Ok(result);
+        //}
+
         [HttpPost]
         public async Task<ActionResult<AccountsChart>> AddAccount(AccountsChart accounts)
         {
